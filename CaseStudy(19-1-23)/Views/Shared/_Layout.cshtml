@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESHOPPY</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" title="more options">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @if (User.IsInRole("Admin"))
+                {
+                    @Html.ActionLink("Shopping Zone", "Index", "Products", new { area = "" }, new { @class = "navbar-brand" })
+                }
+                else
+                {
+                    @Html.ActionLink("Shopping Zone", "UIndex", "Products", new { area = "" }, new { @class = "navbar-brand" })
+                }
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("Products", "Index", "Products")</li>
+                        <li>@Html.ActionLink("Category", "Index", "Categories")</li>
+                        <li>@Html.ActionLink("SubCategory", "Index", "SubCategories")</li>
+                        <li>
+                            @using (Html.BeginForm("Search", "Products", FormMethod.Post, new { @class = "form-control" }))
+                            {
+                                @Html.TextBox("s")
+                                <input type="submit" class="btn btn-default" value="Search" />
+                            }
+                        </li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Products", "UIndex", "Products")</li>
+
+                        <li>
+                            @Html.ActionLink("Cart", "Index", "Carts")
+                        </li>
+                        //if ((string)Session["Carts"] != null)
+                        //{
+
+                        //}
+
+
+                        <li>@Html.ActionLink("order", "Index", "Order")</li>
+                        <li>
+                            @using (Html.BeginForm("USearch", "Products", FormMethod.Post))
+                            {
+                                @Html.TextBox("s")
+                                <input type="submit" value="Search" />
+                            }
+                        </li>
+                    }
+
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

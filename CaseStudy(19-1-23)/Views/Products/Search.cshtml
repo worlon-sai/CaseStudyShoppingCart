@@ -1,0 +1,13 @@
+﻿<h2>No Result Found</h2>
+@if (User.IsInRole("Admin"))
+{
+    <div>
+        @Html.ActionLink("Back to List", "Index","", new { @class = "btn btn-primary" })
+    </div>
+}
+else
+{
+    <div>
+        @Html.ActionLink("Back to List", "UIndex","", new { @class = "btn btn-primary" })
+    </div>
+}

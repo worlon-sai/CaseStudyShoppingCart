@@ -1,0 +1,58 @@
+﻿@model IEnumerable<CaseStudy_19_1_23_.Models.ViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.products.PName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.products.PPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.subCategory.SuName)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.products.PName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.products.PPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.subCategory.SuName)
+            </td>
+
+            <td>
+                @Html.ActionLink("Back to Home", "UIndex", "Products", "", new { @class = "btn btn-primary" }) |
+                @Html.ActionLink("More", "Details", new { id = item.cart.CId }, new { @class = "btn btn-warning" }) |
+                @Html.ActionLink("Remove From Cart", "Delete", new { id = item.cart.CId }, new { @class = "btn btn-danger" }) |
+
+                @if (item.products.PStocks > 0)
+                {
+                    @Html.ActionLink("Buy", "Buy", "Order", new { PId = item.products.PId }, new { @class = "btn btn-success" })
+                }
+                else
+                {
+                   
+                <button class="btn btn-default">"No Stocks are available"</button>
+                
+                }
+
+            </td>
+        </tr>
+    }
+
+</table>

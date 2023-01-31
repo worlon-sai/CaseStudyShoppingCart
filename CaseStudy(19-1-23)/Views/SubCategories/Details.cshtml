@@ -1,0 +1,34 @@
+﻿@model CaseStudy_19_1_23_.Models.SubCategory
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SubCategory</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.category.CAName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.category.CAName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SuName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SuName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SuId },new { @class = "btn btn-info" }) |
+    @Html.ActionLink("Back to List", "Index","", new { @class="btn btn-primary" })
+</p>

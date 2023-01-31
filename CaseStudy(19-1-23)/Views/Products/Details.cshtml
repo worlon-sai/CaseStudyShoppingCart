@@ -1,0 +1,58 @@
+﻿@model CaseStudy_19_1_23_.Models.Products
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Products</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.subCategory.SuName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.subCategory.SuName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PStocks)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PStocks)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PImage)
+        </dt>
+
+        <dd>
+            <img src="@Model.PImage" style="width: 95%; height: 220px" alt="Image not found" />
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PId }, new { @class = "btn btn-info" }) |
+    @Html.ActionLink("Back to List", "Index","", new { @class="btn btn-primary" })
+</p>

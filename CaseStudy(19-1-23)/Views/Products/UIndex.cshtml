@@ -1,0 +1,55 @@
+﻿<style>
+</style>
+
+
+@model IEnumerable<CaseStudy_19_1_23_.Models.Products>
+
+@{
+    ViewBag.Title = "UIndex";
+}
+
+<h2>UIndex</h2>
+
+
+
+
+
+
+
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+
+
+
+
+        <div class="card">
+            <div class="col-sm-6">
+                <img src="@item.PImage" class="card-img-top" alt="not found" style="width: 420px; height: 220px">
+                <ul class="list-group list-group-flush">
+                    <h3 class="card-title">@item.PName</h3>
+                    @*<li class="list-group-item">@item.subCategory.SuName</li>*@
+
+                    <li class="list-group-item"><a class="arrow">Price :₹</a>@item.PPrice/-</li>
+                    <li class="list-group-item">@item.subCategory.SuName</li>
+
+                </ul>
+                <div class="card-body">
+                    @Html.ActionLink("Add To Cart", "Create", "Carts", new { PId = item.PId }, new { @class = "btn btn-primary" })
+                    @if (item.PStocks > 0)
+                    {
+                        @Html.ActionLink("Buy", "Buy", "Order", new { PId = item.PId }, new { @class = "btn btn-success" })
+                    }
+                    else
+                    {
+                        <button class="btn btn-default">"No Stocks are available"</button>
+                    }
+
+                </div>
+            </div>
+        </div>
+
+    }
+</div>
+<!--</table> -->
